@@ -1,6 +1,11 @@
 # Bellabeat Smart Device Analytics: Executive Insights Portfolio Project
 
-An end-to-end, production-quality analytics project designed to identify consumer behavior trends from Fitbit smart device users and translate them into growth opportunities for Bellabeat, a high-tech wellness company for women.
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-CC292B?style=flat&logo=sqlite&logoColor=white)
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat&logo=tableau&logoColor=white)
+![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=flat&logo=scipy&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ---
 
@@ -10,23 +15,7 @@ This project conducts a 2-month longitudinal study of 35 smart device users trac
 
 ---
 
-## 2. Project at a Glance
-
-| Metric | Project Value |
-|---|---|
-| **Analysis Duration** | 2 months (61 days, March 12 - May 12, 2016) |
-| **Users Analyzed** | 35 unique users |
-| **Raw Files Processed** | 10 raw CSV files |
-| **Engineered Features** | 14+ engineered features (e.g. sleep efficiency, active percentages, consistency) |
-| **SQL Queries** | 20 intermediate-to-advanced analytical queries |
-| **Statistical Tests** | 2 Paired samples t-tests, Shapiro-Wilk normality tests, Wilcoxon signed-rank tests, K-Means clustering |
-| **Python Scripts** | 6 modular scripts (`config.py`, `utils.py`, `preprocessing.py`, `feature_engineering.py`, `analysis.py`, `db_setup.py`) |
-| **Jupyter Notebooks** | 5 notebooks |
-| **Tableau Dashboard(s)** | 1 Executive Dashboard Spec |
-
----
-
-## 3. Business Problem
+## 2. Business Problem
 
 Urška Sršen (Chief Creative Officer & Co-founder) believes that analyzing smart device tracker data can unlock new growth opportunities for Bellabeat's own line of products: the **Bellabeat App**, **Leaf tracker**, **Time smartwatch**, and **Spring smart water bottle**.
 
@@ -37,88 +26,55 @@ Urška Sršen (Chief Creative Officer & Co-founder) believes that analyzing smar
 
 ---
 
-## 4. Tech Stack
+## 3. Executive Dashboard
 
-| Category | Technology | Usage / Purpose |
-|---|---|---|
-| **Programming** | Python 3.14 | Core language for scripting and analytics |
-| **Data Processing** | Pandas, NumPy | Data cleaning, merging, and feature engineering |
-| **Statistics** | SciPy, Statsmodels, Scikit-learn | Normality checks, t-tests, K-means clustering |
-| **Database** | SQLite3 | Reusable local database engine |
-| **SQL** | SQL (ANSI compliant) | Database views, CTEs, and window functions |
-| **Visualization** | Matplotlib, Seaborn, Tableau | Exploratory plotting and executive dashboard design |
-| **Version Control** | Git / GitHub | Code management, replication, and hosting |
+### Interactive Dashboard on Tableau Public
+👉 **[Click Here to Explore the Live Interactive Dashboard](https://public.tableau.com/views/BellabeatSmartDeviceExecutiveAnalytics/Dashboard1?:language=en-GB&publish=yes&:display_count=n&:origin=viz_share_link)**
+
+This dashboard provides executive-level business intelligence by combining users' activity and sleep habits. Designed for stakeholders to explore cohort trends, it displays real-time KPI metrics, active cycles, and correlation analysis.
+
+![Bellabeat Executive Dashboard](images/dashboard_mockup.png)
 
 ---
 
-## 5. Technical Competencies Demonstrated
+## 4. Visualization Highlights
 
-### Python Engineering
-* Developed a modular, config-driven script architecture utilizing logging, error handling, and relative directory paths rather than hardcoded references.
+### Activity vs Calories
+Our analysis reveals a clear positive correlation between Moderate-to-Vigorous Physical Activity (MVPA) and calories burned. Notably, the calorie burn rate scales differently depending on whether users meet or fail daily guidelines, demonstrating that consistency in reaching moderate thresholds accelerates metabolic outputs.
+![Activity vs Calories](images/activ_cal.png)
+* **Business Takeaway:** Bellabeat should market its devices as active trackers that show real-time metabolic feedback, nudging users to cross the 21-minute daily active threshold to maximize health gains.
 
-### Data Cleaning
-* Reconstructed Month 1 daily sleep metrics from raw minute-level datasets.
-* Audited and resolved transition-day cut-off discrepancies (April 12, 2016) where Month 1 tracking was terminated at 10:00 AM, avoiding step count deflation.
+### Weekly Activity Pattern
+The weekly cycle shows stable, relatively low step averages (6,600 to 7,700) throughout both weekdays and weekends. Concurrently, sedentary time remains consistently high, averaging over 1,000 minutes (16.6 hours) daily, highlighting a deeply rooted sedentary corporate lifestyle.
+![Weekly Activity Pattern](images/weekly%20cycle.png)
+* **Business Takeaway:** Marketing should target daily active habits integrated into corporate office routines rather than focusing on weekend workouts, as users exhibit consistent movement patterns all week.
 
-### Feature Engineering
-* Calculated record-level metrics (sleep efficiency, active ratio, sedentary percentage) and user-level aggregates (average daily steps, sleep consistency standard deviations, weekend-to-weekday activity change percentages).
+### Behavioral Cohorts
+By analyzing the sleep-activity distribution grid (excluding non-wear sleep days), we see that users who walk 10,000+ steps experience a dramatic rise in sleep deficits (70.3% of their tracked sleep days). This confirms that highly active days frequently lead to time constraints, resulting in a lifestyle trade-off.
+![Behavioral Cohorts](images/cohort.png)
+* **Business Takeaway:** The Bellabeat App must proactively protect users' sleep by offering wind-down routines and recovery coaching on highly active days.
 
-### SQL Analytics
-* Built analytical database views joining physical activity with sleep records.
-* Authored 20 complex queries implementing rolling window averages, CTEs, dense ranking, percent contribution, and covariance-correlation proxies.
-
-### Statistical Analysis
-* Applied normality tests (Shapiro-Wilk) to verify assumptions before executing parametric paired t-tests.
-* Calculated Cohen's $d$ effect sizes and 95% confidence intervals to evaluate practical vs. statistical significance.
-* Performed K-means clustering to segment users based on activity and sleep profiles.
-
-### Data Visualization
-* Structured clean, minimalist exploratory plots in Seaborn and mapped calculations, worksheet layouts, and action filters for a premium Tableau executive dashboard.
-
-### Business Communication
-* Translated statistical metrics and data discrepancies into clear, actionable C-suite reports using the Observation $\rightarrow$ Evidence $\rightarrow$ Business Impact $\rightarrow$ Recommendation framework.
-
-### Documentation & Reproducibility
-* Standardized dependencies in `requirements.txt`, created a `.gitignore`, and detailed numbered, step-by-step setup guides to guarantee 100% project reproducibility.
+### Sleep Efficiency
+The Bar-in-Bar chart visually nests actual sleep time inside the total time spent in bed, highlighting sleep latency. While most users maintain a healthy sleep efficiency average of 91.4%, some show wide gray gaps, indicating they spend hours awake in bed struggling to fall asleep.
+![Sleep Efficiency](images/sleep_efficent.png)
+* **Business Takeaway:** Bellabeat can introduce custom sleep-hygiene content and smart bedtime reminders to help users reduce bed latency and improve overall rest quality.
 
 ---
 
-## 6. Architecture Diagram
+## 5. Dashboard Features
 
-```mermaid
-graph TD
-    A[Raw Month 1 & 2 Data] --> B[preprocessing.py]
-    B -->|Deduplicate & Align Sleep| C[Cleaned CSV Data]
-    C --> D[feature_engineering.py]
-    D -->|Add Deficit & Consistency Metrics| E[Engineered CSV Features]
-    E --> F[db_setup.py]
-    F -->|Run schema.sql & views.sql| G[(sqlite3: bellabeat.db)]
-    G --> H[analysis.py]
-    G --> I[Tableau Views]
-    H -->|Paired t-tests & KMeans| J[Statistical Findings]
-    I -->|Visual Encodings| K[Tableau Dashboard]
-    J --> L[Business Recommendations]
-    K --> L
-```
+* **Executive KPI Cards:** Consolidated indicators presenting total users, average steps, sleep, active minutes, and overall sleep efficiency.
+* **Interactive Tableau Dashboard:** Multi-sheet layout synced using dashboard action filters for cohort drilldowns.
+* **Behavioral Segmentation:** User classification based on Tudor-Locke steps indices and sleep deficit categories.
+* **Weekly Activity Trends:** Dual-axis weekday line-and-bar analysis comparing steps vs. sedentary minutes.
+* **Sleep Efficiency Analysis:** Bar-in-bar visualization comparing bed latency per user.
+* **Activity vs. Calories Analysis:** Scatter plot showing daily burn rates with regression trend lines.
+* **WHO Guideline Comparison:** Visual status indicator grouping users who meet the 150-minute weekly MVPA recommendation.
+* **Executive Storytelling:** A structured dashboard design tailored to C-suite decision-making.
 
 ---
 
-## 7. Methodology
-
-Rather than analyzing only the standard 30-day Fitabase dataset (which is the typical course submission pattern), this project **consolidates both available Mechanical Turk datasets** to construct a seamless **61-day tracking window (March 12 - May 12, 2016)**.
-
-### Transition Day Audit & Deduplication
-Our data provenance audit uncovered a critical data quality issue on the transition date **April 12, 2016**, which appeared in both datasets. 
-* Hourly logs showed that Month 1 was cut off at **10:00 AM** on April 12, resulting in artificially deflated step and calorie counts.
-* Month 2 recorded the full **24-hour cycle**.
-* **Consolidation Rule:** We discarded the Month 1 transition-day records and preserved Month 2's complete records, preventing data corruption and protecting our analysis from deflated averages.
-
-### Sleep Data Reconstruction
-Since Month 1 only contained minute-level sleep logs, we built a custom aggregator in `preprocessing.py` that maps sleep records to the **waking calendar date** (matching Fitabase's native behavior) and sums the minutes to construct a uniform sleep table.
-
----
-
-## 8. Key Findings
+## 6. Key Findings
 
 ### Statistical Insights:
 1. **The Sleep-Activity Tradeoff (Hypothesis Test):**
@@ -132,35 +88,9 @@ Since Month 1 only contained minute-level sleep logs, we built a custom aggregat
 3. **Sedentary Dominance:**
    * Average sedentary time is **79% of the tracked day** (11.8 hours). Users are overwhelmingly desk-bound.
 
-### Behavioral Segmentation:
-Unsupervised K-means clustering (N=3) identified distinct profiles:
-* **Cluster 0 (50% of users) - Consistent Moderate Walkers:** ~8k steps/day, 7.4 hours sleep.
-* **Cluster 1 (29% of users) - Sleep-Deprived Walkers:** ~9.8k steps/day, but only 3.6 hours sleep. High activity coupled with severe sleep deficits.
-* **Cluster 2 (21% of users) - Sedentary Sleepers:** ~2.8k steps/day, 7.6 hours sleep.
-
 ---
 
-## 9. Dashboard Preview
-
-### Executive Dashboard
-![Executive Dashboard Mockup](images/dashboard_mockup.png)
-*Caption: High-fidelity executive visualization presenting core KPI cards, daily step distributions, and sleep efficiency indices compiled from consolidated database views.*
-
-### Activity Dashboard
-*(Placeholder for Activity Dashboard Screenshot)*
-*Caption: Detailed hourly analysis of peak walking cycles, sedentary times, and WHO MVPA guideline compliance rates.*
-
-### Sleep Dashboard
-*(Placeholder for Sleep Dashboard Screenshot)*
-*Caption: Visualizing individual sleep efficiency ratios, sleep latency (time awake in bed), and sleep deficit categories.*
-
-### Behavioral Segmentation
-*(Placeholder for Behavioral Segmentation Dashboard Screenshot)*
-*Caption: Multi-dimensional user profiling comparing K-means cluster classifications with Tudor-Locke step cohorts.*
-
----
-
-## 10. Business Recommendations
+## 7. Business Recommendations
 
 Every recommendation maps directly to Bellabeat's marketing and product development strategies:
 
@@ -182,7 +112,32 @@ Every recommendation maps directly to Bellabeat's marketing and product developm
 
 ---
 
-## 11. Repository Structure
+## 8. Technical Skills Demonstrated
+
+* **Data Cleaning & Engineering (Pandas, NumPy):** Custom aggregators, transition-day deduplication, datatype casting, and feature engineering.
+* **Statistical Reasoning (SciPy):** Paired t-tests, Shapiro-Wilk normality tests, Wilcoxon tests, Cohen's d effect sizes, and K-Means clustering.
+* **SQL Querying (SQLite):** View creation, rolling averages using window functions, CTEs, ranking, and cohort summaries.
+* **Tableau Spec:** Strategic dashboard specification (calculated fields, sheets, filter actions).
+* **Business Communication:** Executive summaries and findings reports using structured frameworks.
+
+---
+
+## 9. Methodology
+
+Rather than analyzing only the standard 30-day Fitabase dataset (which is the typical course submission pattern), this project **consolidates both available Mechanical Turk datasets** to construct a seamless **61-day tracking window (March 12 - May 12, 2016)**.
+
+### Transition Day Audit & Deduplication
+Our data provenance audit uncovered a critical data quality issue on the transition date **April 12, 2016**, which appeared in both datasets. 
+* Hourly logs showed that Month 1 was cut off at **10:00 AM** on April 12, resulting in artificially deflated step and calorie counts.
+* Month 2 recorded the full **24-hour cycle**.
+* **Consolidation Rule:** We discarded the Month 1 transition-day records and preserved Month 2's complete records, preventing data corruption and protecting our analysis from deflated averages.
+
+### Sleep Data Reconstruction
+Since Month 1 only contained minute-level sleep logs, we built a custom aggregator in `preprocessing.py` that maps sleep records to the **waking calendar date** (matching Fitabase's native behavior) and sums the minutes to construct a uniform sleep table.
+
+---
+
+## 10. Repository Structure
 
 ```
 Bellabeat-Smart-Device-Analytics/
@@ -192,6 +147,12 @@ Bellabeat-Smart-Device-Analytics/
 ├── data/
 │   ├── raw/                 # Raw datasets (split by Month 1 & Month 2 folders)
 │   └── processed/           # Cleaned, deduplicated, and feature-engineered outputs
+├── images/
+│   ├── activ_cal.png
+│   ├── cohort.png
+│   ├── dashboard_mockup.png
+│   ├── sleep_efficent.png
+│   └── weekly cycle.png
 ├── scripts/
 │   ├── config.py            # Global constants, seeds, and directories
 │   ├── utils.py             # Shared logging and string sanitization functions
@@ -220,7 +181,7 @@ Bellabeat-Smart-Device-Analytics/
 
 ---
 
-## 12. Setup Instructions
+## 11. Setup Instructions
 
 Follow these numbered steps to reproduce the entire analytics pipeline locally:
 
@@ -257,7 +218,7 @@ Follow these numbered steps to reproduce the entire analytics pipeline locally:
 
 ---
 
-## 13. Project Limitations
+## 12. Limitations
 
 * **Historical Dataset:** The Fitbit dataset was collected in 2016. While standard for training analyses, consumer behavior, screen time habits, and wearable technology accuracy have evolved.
 * **Small Participant Pool:** The study tracks 35 users, which decreases to 24 users for sleep analysis and only 8-11 users for weight logging. This small sample size restricts generalized demographic representation.
@@ -268,7 +229,7 @@ Follow these numbered steps to reproduce the entire analytics pipeline locally:
 
 ---
 
-## 14. Future Improvements
+## 13. Future Improvements
 
 * **Predictive Modeling:** Build machine learning classifiers (e.g., Random Forests or XGBoost) to predict days when a user is likely to experience a sleep deficit based on mid-day activity.
 * **Anomaly Detection:** Implement automated alerts for sudden declines in sleep efficiency or device wear time, signaling potential illness or abandonment.
@@ -277,15 +238,3 @@ Follow these numbered steps to reproduce the entire analytics pipeline locally:
 * **Cloud Database Migration:** Migrate the local SQLite instance to a cloud data warehouse (e.g., Snowflake or Google BigQuery) to simulate enterprise analytical workloads.
 * **Additional Wearable Integrations:** Expand the ingestion scripts to process Apple Health, Garmin, and Oura Ring datasets.
 * **Longitudinal Cohort Study:** Analyze multi-year tracker logs to model seasonality and long-term user retention.
-
----
-
-## 15. Project Outcomes
-
-This project demonstrates a production-quality analytical portfolio piece featuring:
-* **✓ Reproducible Analytics Pipeline:** Dynamic configuration management, standard utilities, and clean logging.
-* **✓ Production-Quality ETL:** Seamless merging of disjoint datasets, cleaning overlapping transition periods, and aggregating granular time series.
-* **✓ SQL Analytical Reporting:** CTEs, window functions, and views designed to support executive decision-making.
-* **✓ Statistical Hypothesis Testing:** Normality checking, paired samples modeling, and multi-dimensional K-means user segmentation.
-* **✓ Executive Dashboard Design:** Comprehensive calculated field mapping and interaction guides.
-* **✓ Business Recommendation Framework:** Data-driven strategic insights directly mapped to Bellabeat's marketing positioning.
